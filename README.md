@@ -92,29 +92,29 @@ Upload `frames.zip` and `annotations-clean.jsonl` to the notebook when prompted.
 
 Navigate to the Prodigy install directory:
 ```
-cd /home/faculty/pchandra/.local/lib/python3.10/site-packages/
+cd /[prodigy directory]
 ```
 
 Set environment variables:
 ```
 export PRODIGY_CONFIG_OVERRIDES='{"host": "10.128.0.3", "port": 6225}'
-export PYTHONPATH="/home/students/nfimbres"
+export PYTHONPATH="/main"
 ```
 
 Run Prodigy:
 ```
-python3 -m prodigy image.multchoice [dataset] /home/students/nfimbres/mouse-behavior-mlbic/frames/[frame folder] "ON HOUSE (N), ON HOUSE (S), IN HOUSE (N), IN HOUSE (S), IN FOOD HOPPER, ON FOOD HOPPER" -F /home/students/nfimbres/prodigy_recipes/mult_choice.py
+python3 -m prodigy image.multchoice [dataset] /main/mouse-behavior-mlbic/frames/[frame folder] "ON HOUSE (N), ON HOUSE (S), IN HOUSE (N), IN HOUSE (S), IN FOOD HOPPER, ON FOOD HOPPER" -F /main/prodigy_recipes/mult_choice.py
 ```
 
 Export and clean JSONL:
 ```
-python3 -m prodigy db-out [dataset] > /home/students/nfimbres/mouse-behavior-mlbic/json_output/[annotations].jsonl
-python3 /home/students/nfimbres/prodigy_recipes/clean_json.py original.jsonl clean.jsonl
+python3 -m prodigy db-out [dataset] > /main/mouse-behavior-mlbic/json_output/[annotations].jsonl
+python3 /main/prodigy_recipes/clean_json.py original.jsonl clean.jsonl
 ```
 
 List existing datasets:
 ```
-sqlite3 /home/students/nfimbres/prodigy_data/prodigy.db "SELECT name FROM dataset;"
+sqlite3 /main/prodigy_data/prodigy.db "SELECT name FROM dataset;"
 ```
 
 Create dataset manually in Python:
